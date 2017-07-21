@@ -877,96 +877,83 @@ body .mouth {
                     $('.loader').addClass('hide');
                     $('#generate_text').show();
                     $('#generate_btn').prop('enabled', null);
-                    /*if (data['Error'] !== null){
-                      if (data['Error'] == '1'){
-                          $('#response').html('Provide an email and/or a webhook endpoint');
-                      } else if (data['Error'] == '2'){
-                          $('#response').html('Provide a memo to remind you what this token is used for.');
-                      } else if (data['Error'] == '3'){
-                          $('#response').html('Invalid webhook supplied');
-                      } else {
-                          $('#response').html('An unexpected error occured');
-                      }
-                      // $('.jumbotron').css('height', $(this).data('jumbo-height'));
-                      $('#response').removeClass('hidden').show();
-                    }else{*/
-                        $('#response').removeClass('hidden').show();
-                        $('#response').addClass('hidden').hide();
-                        $('#server_response').removeClass('hidden').show();
-                        var path_components = data['Url'].split('/');
-                        var file_name = path_components.pop();
-                        $('#alert_email_recipient').text(data['Email']);
-                        $('input[name=url]').val(data['Url']);
-                        $('#rotate_url').text(path_components.join('/'));
-                        $('input[name=hostname]').val(data['Hostname']);
-                        $('span[class=hostname]').text(data['Hostname']);
-                        $('#host').text(path_components[2]);
-                        $('#canarytoken').text(data['Token']);
-                        $('.canarytoken').text(data['Token']).val(data['Token']);
-                        $('.tokenauth').val(data['Auth']);
-                        rotate_filename();
-                        $('.subtype > input').val('');
-                        $('#web').removeClass('hidden').show();
-                        $('#dns').removeClass('hidden').show();
-                        $('.dns').removeClass('hidden').show();
-                        $('#image').removeClass('hidden').show();
 
-                        $('input[name=smtp]').val(data['Token']+'@'+document.domain);
-                        $('#smtp').removeClass('hidden').show();
+                    $('#response').addClass('hidden').hide();
+                    $('#server_response').removeClass('hidden').show();
+                    var path_components = data['Url'].split('/');
+                    var file_name = path_components.pop();
+                    $('#alert_email_recipient').text(data['Email']);
+                    $('input[name=url]').val(data['Url']);
+                    $('#rotate_url').text(path_components.join('/'));
+                    $('input[name=hostname]').val(data['Hostname']);
+                    $('span[class=hostname]').text(data['Hostname']);
+                    $('#host').text(path_components[2]);
+                    $('#canarytoken').text(data['Token']);
+                    $('.canarytoken').text(data['Token']).val(data['Token']);
+                    $('.tokenauth').val(data['Auth']);
+                    rotate_filename();
+                    $('.subtype > input').val('');
+                    $('#web').removeClass('hidden').show();
+                    $('#dns').removeClass('hidden').show();
+                    $('.dns').removeClass('hidden').show();
+                    $('#image').removeClass('hidden').show();
 
-                        $('a[name=secretkeeper]').prop('href','canarytoken://secretkeeper/'+data['Token']);
-                        $('a[name=secretkeeper]').text('canarytoken://secretkeeper/'+data['Token']);
-                        $('#secretkeeper').removeClass('hidden').show();
+					$('input[name=smtp]').val(data['Token']+'@'+document.domain);
+                    $('#smtp').removeClass('hidden').show();
 
-                        $('input[name=svn]').val('svn propset svn:externals "extras http://svn.'+data['Token']+'.'+document.domain+'" .');
-                        $('#svn').removeClass('hidden').show();
+                    $('a[name=secretkeeper]').prop('href','canarytoken://secretkeeper/'+data['Token']);
+                    $('a[name=secretkeeper]').text('canarytoken://secretkeeper/'+data['Token']);
+                    $('#secretkeeper').removeClass('hidden').show();
 
-                        $('#qrcode_png').prop('src', data['qrcode_png']);
-                        $('#qrcode').removeClass('hidden').show();
+                    $('input[name=svn]').val('svn propset svn:externals "extras http://svn.'+data['Token']+'.'+document.domain+'" .');
+                    $('#svn').removeClass('hidden').show();
+
+                    $('#qrcode_png').prop('src', data['qrcode_png']);
+                    $('#qrcode').removeClass('hidden').show();
 
 
-                        if (data['clonedsite'] != undefined) {
-                          $('.clonedsite-js').text(data['clonedsite_js']);
-                          $('#clonedsite').removeClass('hidden').show();
-                        } else {
-                          $('#clonedsite').hide();
-                        }
+                    if (data['clonedsite'] != undefined) {
+                      $('.clonedsite-js').text(data['clonedsite_js']);
+                      $('#clonedsite').removeClass('hidden').show();
+                    } else {
+                      $('#clonedsite').hide();
+                    }
 
-                        if (data['imgur_count'] != undefined) {
-                          $('#imgur_count').text(data['imgur_count']);
-                          $('#imgur_id').text(data['imgur_id']);
-                          $('#imgur_link').prop('href', 'http://imgur.com/'+data['imgur_id']);
-                          $('#imgur').removeClass('hidden').show();
-                        } else {
-                          $('#imgur').hide();
-                        }
+					if (data['imgur_count'] != undefined) {
+                      $('#imgur_count').text(data['imgur_count']);
+                      $('#imgur_id').text(data['imgur_id']);
+                      $('#imgur_link').prop('href', 'http://imgur.com/'+data['imgur_id']);
+                      $('#imgur').removeClass('hidden').show();
+                    } else {
+                      $('#imgur').hide();
+                    }
 
-                        if (data['linkedin_account']) {
-                          $('#linkedin_account').text(data['linkedin_account']);
-                          $('#linkedin_account_views').text(data['linkedin_account_views']);
-                          $('#linkedin').removeClass('hidden').show();
-                        } else {
-                          $('#linkedin').hide();
-                        }
+                    if (data['linkedin_account']) {
+                      $('#linkedin_account').text(data['linkedin_account']);
+                      $('#linkedin_account_views').text(data['linkedin_account_views']);
+                      $('#linkedin').removeClass('hidden').show();
+                    } else {
+                      $('#linkedin').hide();
+                    }
 
-                        if (data['bitcoin_balance'] != undefined && data['bitcoin_address'] != undefined) {
-                          $('#bitcoin_address').text(data['bitcoin_address']);
-                          $('#bitcoin_balance').text(data['bitcoin_balance']);
-                          $('#bitcoin').removeClass('hidden').show();
-                        } else {
-                          $('#bitcoin').hide();
-                        }
+                    if (data['bitcoin_balance'] != undefined && data['bitcoin_address'] != undefined) {
+                      $('#bitcoin_address').text(data['bitcoin_address']);
+                      $('#bitcoin_balance').text(data['bitcoin_balance']);
+                      $('#bitcoin').removeClass('hidden').show();
+                    } else {
+                      $('#bitcoin').hide();
+                    }
 
-                        //rewrite download links
-                        var fmt_links = $('.download_fmt');
-                        for (var i=0; i<fmt_links.length; i++) {
-                          var fmt = $(fmt_links[i]).data('fmt');
-                          $(fmt_links[i]).prop('href', '/download?fmt='+fmt+'&token='+data['Token']);
-                        }
-                        //rewrite token inputs, if present
-                        $('input[name=token]').val(data['Token']);
-                        $('.filegen').removeClass('hidden').show();
-                    //}
+                    //rewrite download links
+                    var fmt_links = $('.download_fmt');
+                    for (var i=0; i<fmt_links.length; i++) {
+                      var fmt = $(fmt_links[i]).data('fmt');
+                      $(fmt_links[i]).prop('href', '/download?fmt='+fmt+'&token='+data['Token']);
+                    }
+                    //rewrite token inputs, if present
+                    $('input[name=token]').val(data['Token']);
+                    $('.filegen').removeClass('hidden').show();
+                    
                 },
                 error: function( jqXhr, textStatus, errorThrown ){
                     console.log( errorThrown );
