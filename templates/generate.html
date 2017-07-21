@@ -877,7 +877,7 @@ body .mouth {
                     $('.loader').addClass('hide');
                     $('#generate_text').show();
                     $('#generate_btn').prop('enabled', null);
-                    if (data['Error'] !== null){
+                    /*if (data['Error'] !== null){
                       if (data['Error'] == '1'){
                           $('#response').html('Provide an email and/or a webhook endpoint');
                       } else if (data['Error'] == '2'){
@@ -889,7 +889,8 @@ body .mouth {
                       }
                       // $('.jumbotron').css('height', $(this).data('jumbo-height'));
                       $('#response').removeClass('hidden').show();
-                    }else{
+                    }else{*/
+                        $('#response').removeClass('hidden').show();
                         $('#response').addClass('hidden').hide();
                         $('#server_response').removeClass('hidden').show();
                         var path_components = data['Url'].split('/');
@@ -965,7 +966,7 @@ body .mouth {
                         //rewrite token inputs, if present
                         $('input[name=token]').val(data['Token']);
                         $('.filegen').removeClass('hidden').show();
-                    }
+                    //}
                 },
                 error: function( jqXhr, textStatus, errorThrown ){
                     console.log( errorThrown );
