@@ -876,7 +876,7 @@ body .mouth {
                     console.log(data);
                     $('.loader').addClass('hide');
                     $('#generate_text').show();
-                    $('#generate_btn').prop('disabled', null);
+                    $('#generate_btn').prop('enabled', null);
                     if (data['Error'] !== null){
                       if (data['Error'] == '1'){
                           $('#response').html('Provide an email and/or a webhook endpoint');
