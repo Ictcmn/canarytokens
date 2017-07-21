@@ -913,10 +913,10 @@
                 processData: false,
                 data: data,
                 success: function(data){
-                    $('#save').prop('disabled',false);
+                    $('#save').prop('enabled',true);
 
                     //$('.loader').addClass('hide');
-                    if (data['Error'] !== null){
+                    /*if (data['Error'] !== null){
                       if (data['Error'] == '1'){
                           $('#endpoints_errors').html('Provide an email and/or a webhook endpoint');
                           $('#endpoints').addClass('error-outline').removeClass('success-outline');
@@ -935,7 +935,8 @@
                           $('textarea[name=memo]').addClass('error-outline').removeClass('success-outline');
                       }
                       showSave();
-                    }else{
+                    }else{*/
+		      showSave();
                       $('.error-field').hide();
                       $('.result').hide();
                       $('.result.'+type).show();
