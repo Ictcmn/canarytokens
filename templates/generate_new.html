@@ -913,48 +913,27 @@
                 processData: false,
                 data: data,
                 success: function(data){
-                    $('#save').prop('enabled',true);
+                    $('#save').prop('disabled',false);
 
                     //$('.loader').addClass('hide');
-                    /*if (data['Error'] !== null){
-                      if (data['Error'] == '1'){
-                          $('#endpoints_errors').html('Provide an email and/or a webhook endpoint');
-                          $('#endpoints').addClass('error-outline').removeClass('success-outline');
-                          $('#endpoints_errors').show();
-                      } else if (data['Error'] == '2'){
-                          $('#memo_errors').html('Provide a memo to remind you what this token is used for.');
-                          $('#memo_errors').show();
-                          $('textarea[name=memo]').addClass('error-outline').removeClass('success-outline');
-                      } else if (data['Error'] == '3'){
-                          $('#endpoints_errors').html('Invalid webhook supplied');
-                          $('#endpoints_errors').show();
-                          $('#endpoints').addClass('error-outline').removeClass('success-outline');
-                      } else {
-                          $('#memo_errors').html('An unexpected error occured');
-                          $('#memo_errors').show();
-                          $('textarea[name=memo]').addClass('error-outline').removeClass('success-outline');
-                      }
-                      showSave();
-                    }else{*/
-		      showSave();
-                      $('.error-field').hide();
-                      $('.result').hide();
-                      $('.result.'+type).show();
-                      //swap out the layers to make the results visible
-                      $('.success').addClass('success-visible');
-                      $('.create').addClass('create-hidden');
+                    $('.error-field').hide();
+                    $('.result').hide();
+                    $('.result.'+type).show();
+                    //swap out the layers to make the results visible
+                    $('.success').addClass('success-visible');
+                    $('.create').addClass('create-hidden');
 
-                      cb = _responseCallbacks[type];
-                      if (!cb) {
-                        cb =_responseCallbacks['default'];
-                      }
-                      cb(data)
-
-                      $('.jumbotron').css('height', $('.success').innerHeight())
-
-                      $('a.manage-link').prop('href', '/manage?token='+data['Token']+'&auth='+data['Auth']);
-                      $('nav').removeClass('hidden');
+                    cb = _responseCallbacks[type];
+                    if (!cb) {
+                      cb =_responseCallbacks['default'];
                     }
+                    cb(data)
+
+                    $('.jumbotron').css('height', $('.success').innerHeight())
+
+                    $('a.manage-link').prop('href', '/manage?token='+data['Token']+'&auth='+data['Auth']);
+                    $('nav').removeClass('hidden');
+                    
                 },
                 error: function( jqXhr, textStatus, errorThrown ){
                     console.log( errorThrown );
